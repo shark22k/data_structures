@@ -1,6 +1,6 @@
-# sorting algorithms
+# sorting
 
-# selection sort
+
 def selection_sort(arr):
     for i in range(len(arr) - 1):
         min_value = arr[i]
@@ -11,7 +11,7 @@ def selection_sort(arr):
         arr[i], arr[i_min] = arr[i_min], arr[i]
     return arr
 
-#bubble sort
+
 def bubble_sort_1(arr):
     for i in range(1, len(arr)):
         swapping_happen = False
@@ -23,7 +23,7 @@ def bubble_sort_1(arr):
             break
     return arr
 
-#bubble sort
+
 def bubble_sort_2(arr):
     for i in range(len(arr) - 1):
         swapping_happen = False
@@ -35,7 +35,7 @@ def bubble_sort_2(arr):
             break
     return arr
 
-# insertion sort
+
 def insertion_sort(arr):
     for i in range(1, len(arr)):
         hole = i
@@ -46,7 +46,23 @@ def insertion_sort(arr):
         arr[hole] = value
     return arr
 
-# merge sort
+
+def binary_search(arr):
+    def binary_search_h(arr, start, end, value):
+        if start <= end:
+            mid = (start + end) // 2
+            if arr[mid] == value:
+                return mid
+            elif arr[mid] < value:
+                binary_search_h(arr, mid + 1, end, value)
+            else:
+                return binary_search_h(arr, start, mid - 1, value)
+
+    return binary_search_h(arr, 0, len(arr) - 1, 5)
+
+
+# print(binary_search([x for x in [10,2,2,3,4,5,5,5,8,9,10]]))
+
 def merge_sort(arr):
 
     def merge(arr, left, right):
@@ -89,18 +105,3 @@ def merge_sort(arr):
 
 
 print(merge_sort([x for x in range(10, 0, -1)]))
-
-
-# binary search
-def binary_search(arr):
-    def binary_search_h(arr, start, end, value):
-        if start <= end:
-            mid = (start + end) // 2
-            if arr[mid] == value:
-                return mid
-            elif arr[mid] < value:
-                binary_search_h(arr, mid + 1, end, value)
-            else:
-                return binary_search_h(arr, start, mid - 1, value)
-
-    return binary_search_h(arr, 0, len(arr) - 1, 5)
